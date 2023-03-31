@@ -8,20 +8,28 @@ export const authOptions = {
         GithubProvider({
             clientId: process.env.GITHUB_CLIENT_ID,
             clientSecret: process.env.GITHUB_CLIENT_SECRET,
-            authorization: { params: { scope: 'read:user' } },
+            authorization: { params: { scope: 'read:users' } },
         }),
     ],
     callbacks: {
         async signIn({ user }) {
-            const { email } = user;
-            await fauna.query(
-                q.Create(
-                    q.Collection('users'),
-                    { data: email }
+
+
+            try {
+                const { email } = user;
+
+                await fauna.query(
+                    q.Create(
+                        q.Collection('users'),
+                        { data: { email } }
+                    )
                 )
-            )
-            return true
-        },
+
+                return true;
+            } catch {
+                return false
+            }
+        }
     }
 }
 export default NextAuth(authOptions)
