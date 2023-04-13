@@ -11,23 +11,44 @@ export const authOptions = {
             authorization: { params: { scope: 'read:users' } },
         }),
     ],
+
+    jwt: {
+        secret: process.env.SIGNING_KEY
+    },
     callbacks: {
         async signIn({ user }) {
+            const { email } = user;
 
 
             try {
-                const { email } = user;
-
                 await fauna.query(
-                    q.Create(
-                        q.Collection('users'),
-                        { data: { email } }
+                    q.If(
+                        q.Not(
+                            q.Exists(
+                                q.Match(
+                                    q.Index('user_by_email'),
+                                    q.Casefold(email)
+                                )
+                            )
+                        ),
+                        q.Create(
+                            q.Collection('users'),
+                            { data: { email } }
+                        ),
+                        q.Get(
+                            q.Match(
+                                q.Index('user_by_email'),
+                                q.Casefold(email)
+                            )
+                        )
                     )
-                )
+                );
 
                 return true;
-            } catch {
-                return false
+
+            } catch (err) {
+                console.log(err);
+                return false;
             }
         }
     }
