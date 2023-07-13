@@ -29,7 +29,7 @@ export default function Posts({ posts }: PostsProps) {
                         <a key={post.slug} href="#">
                             <time> {post.updatedAt} </time>
                             <strong> {post.title} </strong>
-                                <p>{post.excerpt}</p>
+                            <p>{post.excerpt}</p>
                         </a>
                     ))}
 
@@ -48,10 +48,14 @@ export const getStaticProps: GetStaticProps = async () => {
     })
 
     const posts = response.results.map((post: any) => {
+
         return {
             slug: post.uid,
             title: post.data.title,
-            excerpt: post.data.content.find(content => content.type === 'paragraph')?.text ?? '',
+            excerpt: post.data.content.map((content) => {
+                const index = content.text.indexOf('\n');
+                return content.text.substring(0, index);
+            }),
             updatedAt: new Date(post.last_publication_date).toLocaleDateString('en', {
                 day: '2-digit',
                 month: 'long',
