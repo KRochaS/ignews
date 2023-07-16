@@ -1,6 +1,7 @@
 import Prismic from '@prismicio/client';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 import { getPrismicClient } from '../../services/prismic';
 import styles from './styles.module.scss';
 
@@ -26,11 +27,13 @@ export default function Posts({ posts }: PostsProps) {
 
 
                     {posts.map(post => (
-                        <a key={post.slug} href="#">
-                            <time> {post.updatedAt} </time>
-                            <strong> {post.title} </strong>
-                            <p>{post.excerpt}</p>
-                        </a>
+                        <Link key={post.slug} href={`/posts/${post.slug}`}>
+                            <a>
+                                <time> {post.updatedAt} </time>
+                                <strong> {post.title} </strong>
+                                <p>{post.excerpt}</p>
+                            </a>
+                        </Link>
                     ))}
 
                 </div>
