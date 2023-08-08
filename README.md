@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="https://github.com/KRochaS/ignews/blob/master/.github/ignite.svg" width="470" > 
+  <img src="https://github.com/KRochaS/ignews/blob/master/.github/ignite-reactjs.svg" width="470" > 
 </p>
 <p align="center">
   <img src="https://github.com/KRochaS/ignews/blob/master/.github/ig.news.svg" width="170" > 
