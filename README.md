@@ -27,7 +27,7 @@ Developed using ReactJS and NextJS, the project is a technology blog where users
 
 Applying concepts such as external API consumption, Server Side Rendering (SSR), Static Site Generation (SSG), Stripe for subscription payments, NextAuth for GitHub authentication, FaunaDB for storing user information in a database, and Prismic CMS for adding and managing post content.
 
-## :books: Tecnologias e libs  
+## :books: Technologies e libs  
 
 - [React](https://pt-br.reactjs.org/)
 - [NextJS](https://nextjs.org/)
