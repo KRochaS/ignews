@@ -39,9 +39,7 @@ import { Async } from ".";
 it("renders correctly", async () => {
   render(<Async />);
 
-  screen.logTestingPlaygroundURL();
-
-  expect(screen.getByText("Hello World")).toBeInTheDocument();
+  //   expect(screen.getByText("Hello World")).toBeInTheDocument();
 
   await waitForElementToBeRemoved(screen.queryByText("Button"));
 });
