@@ -35,6 +35,43 @@ Applying concepts such as external API consumption, Server Side Rendering (SSR),
 - [SCSS](https://sass-lang.com/)
 - [Stripe](https://stripe.com/)
 - [Prismic](https://prismic.io/)
+- [Testing Library](https://testing-library.com/)
+- [Jest](https://jestjs.io/pt-BR/)
+
+
+## :test_tube: Unit Tests
+   #### Components
+- [x] ActiveLink
+     - [x] renders correctly
+     - [x] adds active class if the link as currently active
+- [x] Header
+     - [x] renders correctly
+- [x] SignInButton
+     - [x] renders correctly when user is not authenticated
+     - [x] renders correctly when user is authenticated
+- [x] SubscribeButton
+     - [x] renders correctly
+     - [x] redirect to signin when not authenticated
+     - [x] redirect to post when user is authenticated and had an active subscription
+    #### Pages
+- [x] Home
+     - [x] renders correctly
+     - [x] loads initial data
+- [x] Posts
+     - [x] renders correctly
+     - [x] redirects user if no subscription is found
+     - [x] loads initial data
+- [x] Post
+     - [x] renders correctly
+     - [x] loads initial data
+- [x] PostPreview
+     - [x] renders correctly
+     - [x] redirects user to full post when user is subscribed
+     - [x] loads initial data
+
+ <img src="https://github.com/KRochaS/ignews/blob/master/.github/tests.PNG" />
+  
+
 
  
  ## :computer: Layout
